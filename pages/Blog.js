@@ -1,11 +1,5 @@
 import React from 'react'
-import dynamic from 'next/dynamic'
-
-
-const BlogPost = dynamic(
-    () => import('../components/BlogPost'),
-    { loading: () => <p>Loading...</p> }
-)
+import BlogPost from '../components/BlogPost'
 
 const Blog = ({dataPost}) => {
     return (
