@@ -1,11 +1,11 @@
 import Markdown from 'markdown-to-jsx'
 
 export default function Post({ viewPost }) {
-    const author = viewPost.users_permissions_user.username
-    const {published_at} = viewPost
+    const {users_permissions_user: {username}, published_at, thumbnail_img: {url}, titles, content, textThumbnail } = viewPost
     const date = new Date(published_at)
     const formatDate = new Intl.DateTimeFormat('id', { dateStyle: 'full' }).format(date)
-    const image = `https://strapi-blog-contoh.herokuapp.com${viewPost.thumbnail_img.url}`
+    const author = username
+    const image = `https://strapi-blog-contoh.herokuapp.com${url}`
     return(
         <div className="container"> 
             <div className="flex flex-col px-8 xl:px-24">
@@ -14,11 +14,11 @@ export default function Post({ viewPost }) {
                     <p>{author}</p>
                 </div>
                 <div className="pb-3">
-                    <h1 className="font-bold text-4xl lg:text-6xl">{viewPost.titles}</h1>
+                    <h1 className="font-bold text-4xl lg:text-6xl">{titles}</h1>
                 </div>
                 <div className="text-center mb-2">
                     <div className="bg-cover bg-no-repeat h-96 2xl:h-96 rounded-md" style={{ backgroundImage: `url(${image})` }}></div>
-                    <p className="text-gray-400 py-3">{viewPost.textThumbnail}</p>
+                    <p className="text-gray-400 py-3">{textThumbnail}</p>
                 </div>
                 <div className="flex flex-col px-2 leading-7">
                     <Markdown options={{
@@ -50,7 +50,7 @@ export default function Post({ viewPost }) {
                                 }
                             }
                         }
-                    }} >{viewPost.content}</Markdown>
+                    }} >{content}</Markdown>
                 </div>
             </div>
         </div>
