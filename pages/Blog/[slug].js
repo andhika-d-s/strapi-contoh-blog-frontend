@@ -1,10 +1,10 @@
 import Markdown from 'markdown-to-jsx'
 
 export default function Post({ viewPost }) {
+    const author = viewPost.users_permissions_user.username
     const {published_at} = viewPost
     const date = new Date(published_at)
     const formatDate = new Intl.DateTimeFormat('id', { dateStyle: 'full' }).format(date)
-    const author = viewPost.users_permissions_user.username
     const image = `https://strapi-blog-contoh.herokuapp.com${viewPost.thumbnail_img.url}`
     return(
         <div className="container"> 
