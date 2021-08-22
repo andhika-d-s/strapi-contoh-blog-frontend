@@ -1,5 +1,4 @@
 import Markdown from 'markdown-to-jsx'
-import { useRouter } from 'next/router'
 
 export default function Post({ viewPost }) {
     const {published_at} = viewPost
@@ -7,11 +6,8 @@ export default function Post({ viewPost }) {
     const formatDate = new Intl.DateTimeFormat('id', { dateStyle: 'full' }).format(date)
     const author = viewPost.users_permissions_user.username
     const image = `https://strapi-blog-contoh.herokuapp.com${viewPost.thumbnail_img.url}`
-    const router = useRouter()
     return(
         <div className="container"> 
-        {
-            router.isFallback ? (<div>Loading...</div>) :
             <div className="flex flex-col px-8 xl:px-24">
                 <div className="mt-28 text-gray-400 flex flex-row justify-between mb-2">
                     <p>{formatDate}</p>
@@ -57,7 +53,6 @@ export default function Post({ viewPost }) {
                     }} >{viewPost.content}</Markdown>
                 </div>
             </div>
-        }
         </div>
     )
 }
