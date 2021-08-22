@@ -7,9 +7,6 @@ const Footer = () => {
     return (
         <>
         <br />
-        <div>
-            
-        </div>
         <div className="flex flex-col p-8 text-white bg-gray-800 mb-0">
             <div className="grid md:grid-cols-3 gap-9 md:flex-row justify-evenly">
                 <div className="p-2 text-justify">
