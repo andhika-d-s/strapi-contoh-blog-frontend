@@ -2,7 +2,8 @@ import Markdown from 'markdown-to-jsx'
 import { useRouter } from 'next/router'
 
 export default function Post({ viewPost }) {
-    const date = new Date(viewPost.published_at)
+    const {published_at} = viewPost
+    const date = new Date(published_at)
     const formatDate = new Intl.DateTimeFormat('id', { dateStyle: 'full' }).format(date)
     const author = viewPost.users_permissions_user.username
     const image = `https://strapi-blog-contoh.herokuapp.com${viewPost.thumbnail_img.url}`
