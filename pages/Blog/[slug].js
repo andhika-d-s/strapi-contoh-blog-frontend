@@ -55,7 +55,7 @@ export default function Post({ viewPost }) {
     //         </div>
     //     </div>
     // )
-    return 
+    return 0
 }
 
 // get path blog post with static generation
