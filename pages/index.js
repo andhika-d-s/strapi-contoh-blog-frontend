@@ -56,7 +56,7 @@ const BlogList = ({ data }) => {
         }
       </div>
       <div className="py-10 text-center">
-        <Link href='/Blog' passHref>
+        <Link href='/Blog'>
           <PrimaryButton color={`hover:border-black`} className="hover:text-gray-700">See More</PrimaryButton>
         </Link>
       </div>
