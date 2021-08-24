@@ -35,7 +35,7 @@ const Hero = () => {
           <h1 className="text-4xl md:text-7xl mt-28">My first Nextjs + Strapi <br /> Blog Project</h1>
         </motion.div>
         <div className="md:mt-16 mt-3 mx-auto p-10 md:p-0">
-          <Image className="absolute -z-10" src={heroImage} width={600} />
+          <Image className="absolute -z-10" alt="hero-img" src={heroImage} width={600} />
         </div>
       </div>
     </>
@@ -56,7 +56,7 @@ const BlogList = ({ data }) => {
         }
       </div>
       <div className="py-10 text-center">
-        <Link href='/Blog'>
+        <Link href='/Blog' passHref>
           <PrimaryButton color={`hover:border-black`} className="hover:text-gray-700">See More</PrimaryButton>
         </Link>
       </div>
@@ -110,7 +110,7 @@ const AboutUs = () => {
         <div className="text-justify ">
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae blanditiis asperiores earum quidem corrupti voluptatum nesciunt. Necessitatibus odio, earum veniam aliquam eaque, iusto dolores sint officiis recusandae iste, ut provident!</p>
         </div>
-        <Link href="/About">
+        <Link href="/About" passHref>
           <PrimaryButton color={`hover:border-white`} className="hover:text-gray-300" >Read More</PrimaryButton>
         </Link>
       </div>
