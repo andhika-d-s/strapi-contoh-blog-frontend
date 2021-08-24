@@ -1,7 +1,7 @@
 import Markdown from 'markdown-to-jsx'
 
-export default function Post({ viewPost }) {
-    const {users_permissions_user: {username}, published_at, thumbnail_img: {url}, titles, content, textThumbnail } = viewPost
+export default function Post({ viewPost = {} }) {
+    const {users_permissions_user: {username = 'none'} = {}, published_at = '2021-08-08T13:57:40.640Z', thumbnail_img: {url = 'url'} = {}, titles = 'title', content = 'content', textThumbnail = 'text' } = viewPost
     const date = new Date(published_at)
     const formatDate = new Intl.DateTimeFormat('id', { dateStyle: 'full' }).format(date)
     const author = username
@@ -20,7 +20,7 @@ export default function Post({ viewPost }) {
                     <div className="bg-cover bg-no-repeat h-96 2xl:h-96 rounded-md" style={{ backgroundImage: `url(${image})` }}></div>
                     <p className="text-gray-400 py-3">{textThumbnail}</p>
                 </div>
-                <div className="flex flex-col px-2 leading-7">
+                <div className="flex flex-col px-2 leading-7 pb-12">
                     <Markdown options={{
                         wrapper: 'article',
                         overrides: {
@@ -57,7 +57,7 @@ export default function Post({ viewPost }) {
     )
 }
 
-// get path blog post with static generation
+// get path blog post
 export async function getStaticPaths() {
     const res = await fetch('https://strapi-blog-contoh.herokuapp.com/Posts')
     const posts = await res.json()
@@ -71,7 +71,7 @@ export async function getStaticPaths() {
 }
 
 
-// get view post on page with server side rendering
+// get view post on page 
 export async function getStaticProps({ params }) {
     const { slug } = params
     const res = await fetch(`https://strapi-blog-contoh.herokuapp.com/Posts?slug=${slug}`)
