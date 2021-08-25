@@ -1,12 +1,13 @@
 import React from 'react'
+import Link from 'next/link'
 
-const PrimaryButton = ({children, color}) => {
+const PrimaryButton = ({children, color, link}) => {
     return (
-        <div className="py-5 text-xl">
-            <button className={`font-bold transition-colors border-transparent ${color} border-b-4 px-1`}>
+        <Link href={link} className="py-5 text-xl">
+            <a className={`font-bold transition-colors border-transparent ${color} border-b-4 px-1`}>
                 {children}
-            </button>
-        </div>
+            </a>
+        </Link>
     )
 }
 
